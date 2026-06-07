@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>गॅलरी – क्षितिज मल्टीस्पेशालिटी हॉस्पिटल, नांदेड</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #1a9bd7;
+    --blue-dark: #1278a8;
+    --blue-light: #e4f4fc;
+    --orange: #e8470a;
+    --orange-dark: #c23a08;
+    --text: #1a1a2e;
+    --text-muted: #5a6275;
+    --border: #d4edf8;
+    --bg: #ffffff;
+    --bg-alt: #f3fafd;
+    --radius: 12px;
+    --shadow: 0 4px 24px rgba(26,155,215,0.13);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Hind', 'Noto Sans Devanagari', sans-serif;
+    color: var(--text);
+    background: var(--bg-alt);
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  .nav {
+    background: var(--blue);
+    padding: 0 2rem;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    height: 62px;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(13,61,122,0.25);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 36px; height: 36px;
+    background: #fff; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .nav-logo-name {
+    font-size: 15px; font-weight: 700; color: #fff;
+    font-family: 'Noto Serif Devanagari', serif;
+    line-height: 1.2;
+  }
+  .nav-logo-sub { font-size: 10px; color: rgba(255,255,255,0.72); }
+  .nav-back {
+    color: rgba(255,255,255,0.88); font-size: 13px; font-weight: 600;
+    text-decoration: none; display: flex; align-items: center; gap: 6px;
+    padding: 7px 16px; border-radius: 7px;
+    border: 1.5px solid rgba(255,255,255,0.45);
+    transition: border-color 0.2s;
+  }
+  .nav-back:hover { border-color: rgba(255,255,255,0.9); }
+
+  /* HEADER */
+  .gallery-hero {
+    background: linear-gradient(135deg, #1a9bd7 0%, #0f6fa0 60%, #0d5880 100%);
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .gallery-hero::before {
+    content: '';
+    position: absolute; left: -80px; bottom: -80px;
+    width: 320px; height: 320px;
+    background: rgba(232,71,10,0.06); border-radius: 50%;
+  }
+  .gallery-hero h1 {
+    font-size: 28px; font-weight: 700; color: #fff;
+    font-family: 'Noto Serif Devanagari', serif;
+    margin-bottom: 0.4rem; position: relative; z-index: 1;
+  }
+  .gallery-hero p {
+    font-size: 14px; color: rgba(255,255,255,0.8);
+    position: relative; z-index: 1;
+  }
+  .gallery-hero .photo-count {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff; font-size: 12px; font-weight: 500;
+    padding: 4px 14px; border-radius: 20px;
+    margin-top: 0.75rem;
+    position: relative; z-index: 1;
+  }
+
+  /* FILTER TABS */
+  .filter-wrap {
+    max-width: 1100px; margin: 0 auto;
+    padding: 1.5rem 2rem 0.5rem;
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .filter-btn {
+    background: #fff; color: var(--text-muted);
+    border: 1.5px solid var(--border);
+    padding: 6px 16px; border-radius: 20px;
+    font-size: 12px; font-weight: 600;
+    cursor: pointer; transition: all 0.18s;
+    font-family: inherit;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--blue); color: #fff; border-color: var(--blue);
+  }
+
+  /* GRID */
+  .gallery-container {
+    max-width: 1100px; margin: 0 auto;
+    padding: 1rem 2rem 3rem;
+    columns: 3 280px; column-gap: 14px;
+  }
+  .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 14px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    box-shadow: var(--shadow);
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .gallery-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(26,155,215,0.22);
+  }
+  .gallery-item img {
+    width: 100%; display: block;
+    transition: transform 0.35s;
+  }
+  .gallery-item:hover img { transform: scale(1.04); }
+  .gallery-item-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(13,61,122,0.72));
+    padding: 1.5rem 0.85rem 0.75rem;
+    opacity: 0; transition: opacity 0.22s;
+  }
+  .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+  .gallery-item-label {
+    color: #fff; font-size: 12px; font-weight: 600;
+    display: flex; align-items: center; gap: 5px;
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(10, 20, 40, 0.94);
+    align-items: center; justify-content: center;
+    padding: 1rem;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-inner {
+    position: relative; max-width: 90vw; max-height: 92vh;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0.75rem;
+  }
+  .lightbox-img {
+    max-width: 100%; max-height: 80vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+    object-fit: contain;
+  }
+  .lightbox-caption {
+    color: rgba(255,255,255,0.8); font-size: 13px;
+    text-align: center;
+  }
+  .lightbox-close {
+    position: fixed; top: 16px; right: 20px;
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.25);
+    color: #fff; font-size: 22px;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background 0.18s;
+    line-height: 1;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.22); }
+  .lightbox-nav {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    color: #fff; font-size: 22px;
+    width: 44px; height: 44px;
+    border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.18s;
+  }
+  .lightbox-nav:hover { background: rgba(255,255,255,0.22); }
+  .lightbox-prev { left: 12px; }
+  .lightbox-next { right: 12px; }
+  .lightbox-counter {
+    position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.55); font-size: 12px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0d2a3e; color: rgba(255,255,255,0.7);
+    text-align: center; font-size: 12px;
+    padding: 1.2rem 2rem;
+  }
+  footer a { color: rgba(255,255,255,0.75); }
+
+  @media (max-width: 600px) {
+    .gallery-container { columns: 2 140px; padding: 0.75rem 1rem 2rem; }
+    .gallery-hero h1 { font-size: 22px; }
+    .filter-wrap { padding: 1rem 1rem 0.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="kshitij_hospital_final.html" class="nav-logo">
+    <div class="nav-logo-icon">🏥</div>
+    <div>
+      <div class="nav-logo-name"><span style="color:#ffa070;">क्षितिज</span> हॉस्पिटल</div>
+      <div class="nav-logo-sub">शिवाजी नगर, नांदेड</div>
+    </div>
+  </a>
+  <a href="kshitij_hospital_final.html" class="nav-back">← मुख्य पृष्ठावर परत</a>
+</nav>
+
+<!-- HERO -->
+<div class="gallery-hero">
+  <h1>📸 हॉस्पिटल गॅलरी</h1>
+  <p>क्षितिज मल्टीस्पेशालिटी हॉस्पिटलच्या सुविधा आणि कर्मचारी</p>
+  <div class="photo-count">🖼️ 11 फोटो</div>
+</div>
+
+<!-- FILTER -->
+<div class="filter-wrap">
+  <button class="filter-btn active" onclick="filterGallery('all', this)">सर्व</button>
+  <button class="filter-btn" onclick="filterGallery('facility', this)">सुविधा</button>
+  <button class="filter-btn" onclick="filterGallery('doctors', this)">डॉक्टर / कर्मचारी</button>
+  <button class="filter-btn" onclick="filterGallery('building', this)">इमारत</button>
+</div>
+
+<!-- GALLERY GRID -->
+<div class="gallery-container" id="galleryGrid">
+
+  <div class="gallery-item" data-cat="facility" data-index="0" onclick="openLightbox(0)">
+    <img src="img1.jpeg" alt="रिसेप्शन – कर्मचारी" loading="lazy" />
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-label">🏥 रिसेप्शन टीम</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="facility" data-index="1" onclick="openLightbox(1)">
+    <img src="img2.jpeg" alt="रिसेप्शन काउंटर" loading="lazy" />
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-label">🛎️ रिसेप्शन काउंटर</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="facility" data-index="2" onclick="openLightbox(2)">
+    <img src="img3.jpeg" alt="शासकीय योजना काउंटर" loading="lazy" />
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-label">📋 शासकीय योजना काउंटर</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="doctors" data-index="3" onclick="openLightbox(3)">
+    <img src="img4.jpeg" alt="डॉक्टर – कक्षात" loading="lazy" />
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-label">👩‍⚕️ डॉक्टर कक्ष</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="facility" data-index="4" onclick="openLightbox(4)">
+    <img src="img5.jpeg" alt="मॅटर्निटी रूम – प्रसूती कक्ष" loading="lazy" />
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-label">🤱 प्रसूती कक्ष</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="facility" data-index="5" onclick="openLightbox(5)">
+    <img src="img6.jpeg" alt="ऑपरेशन थिएटर" loading="lazy" />
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-label">🔬 ऑपरेशन थिएटर</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="facility" data-index="6" onclick="openLightbox(6)">
+    <img src="img7.jpeg" alt="डॉक्टरांचे कार्यालय" loading="lazy" />
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-label">🖥️ डॉक्टर कार्यालय</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="facility" data-index="7" onclick="openLightbox(7)">
+    <img src="img8.jpeg" alt="वॉर्ड – रुग्ण कक्ष" loading="lazy" />
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-label">🛏️ रुग्ण कक्ष (वॉर्ड)</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="building" data-index="8" onclick="openLightbox(8)">
+    <img src="img9.jpeg" alt="हॉस्पिटल इमारत" loading="lazy" />
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-label">🏢 हॉस्पिटल इमारत</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="doctors" data-index="9" onclick="openLightbox(9)">
+    <img src="img10.jpeg" alt="डॉ. सरस्वती जाधव" loading="lazy" />
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-label">👩‍⚕️ डॉ. सरस्वती जाधव</div>
+    </div>
+  </div>
+
+  <div class="gallery-item" data-cat="doctors" data-index="10" onclick="openLightbox(10)">
+    <img src="img11.jpeg" alt="डॉ. राजेंद्र जाधव" loading="lazy" />
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-label">👨‍⚕️ डॉ. राजेंद्र जाधव</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
+  <div class="lightbox-inner">
+    <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+  <button class="lightbox-close" onclick="closeLightbox()" title="बंद करा">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8592;</button>
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8594;</button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<footer>
+  © २०२६ क्षितिज मल्टीस्पेशालिटी हॉस्पिटल, नांदेड &nbsp;|&nbsp;
+  <a href="kshitij_hospital_final.html">← मुख्य पृष्ठावर परत</a>
+</footer>
+
+<script>
+const images = [
+  { src: 'img1.jpeg',  caption: 'रिसेप्शन टीम',             cat: 'facility' },
+  { src: 'img2.jpeg',  caption: 'रिसेप्शन काउंटर',          cat: 'facility' },
+  { src: 'img3.jpeg',  caption: 'शासकीय योजना काउंटर',      cat: 'facility' },
+  { src: 'img4.jpeg',  caption: 'डॉक्टर कक्ष',              cat: 'doctors'  },
+  { src: 'img5.jpeg',  caption: 'प्रसूती कक्ष (Maternity)', cat: 'facility' },
+  { src: 'img6.jpeg',  caption: 'ऑपरेशन थिएटर',             cat: 'facility' },
+  { src: 'img7.jpeg',  caption: 'डॉक्टर कार्यालय',          cat: 'facility' },
+  { src: 'img8.jpeg',  caption: 'रुग्ण कक्ष (वॉर्ड)',       cat: 'facility' },
+  { src: 'img9.jpeg',  caption: 'हॉस्पिटल इमारत',           cat: 'building' },
+  { src: 'img10.jpeg', caption: 'डॉ. सरस्वती जाधव',         cat: 'doctors'  },
+  { src: 'img11.jpeg', caption: 'डॉ. राजेंद्र जाधव',        cat: 'doctors'  },
+];
+
+let currentIndex = 0;
+let visibleIndices = images.map((_, i) => i); // all visible by default
+
+function openLightbox(index) {
+  currentIndex = index;
+  showLightboxImage();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showLightboxImage() {
+  const img = images[currentIndex];
+  document.getElementById('lightboxImg').src = img.src;
+  document.getElementById('lightboxImg').alt = img.caption;
+  document.getElementById('lightboxCaption').textContent = img.caption;
+  const pos = visibleIndices.indexOf(currentIndex);
+  document.getElementById('lightboxCounter').textContent =
+    (pos + 1) + ' / ' + visibleIndices.length;
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeLightboxOnBg(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+
+function navLightbox(dir) {
+  const pos = visibleIndices.indexOf(currentIndex);
+  const newPos = (pos + dir + visibleIndices.length) % visibleIndices.length;
+  currentIndex = visibleIndices[newPos];
+  showLightboxImage();
+}
+
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const items = document.querySelectorAll('.gallery-item');
+  visibleIndices = [];
+  items.forEach(item => {
+    const show = cat === 'all' || item.dataset.cat === cat;
+    item.style.display = show ? '' : 'none';
+    if (show) visibleIndices.push(parseInt(item.dataset.index));
+  });
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowLeft')  navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+  if (e.key === 'Escape')     closeLightbox();
+});
+</script>
+</body>
+</html>
