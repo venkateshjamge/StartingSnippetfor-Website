@@ -705,11 +705,10 @@
       </div>
     </div>
     <div class="hero-right">
-      <iframe name="hidden_appt_iframe" id="hidden_appt_iframe" style="display:none;" onload="handleApptFormSubmit(this)"></iframe>
       <form class="appt-card" id="appointment"
             action="https://docs.google.com/forms/d/e/1FAIpQLSfbXH__k91EG4oE7_NubHQahPKPJ64r3shz1gJMN752z_9EdQ/formResponse"
             method="POST"
-            target="hidden_appt_iframe">
+            onsubmit="handleApptFormSubmit(event)">
         <h3><span style="font-style:normal">📅</span> अपॉइंटमेंट बुक करा</h3>
         <label>तुमचे नाव</label>
         <input type="text" name="entry.1720424357" placeholder="पूर्ण नाव" />
@@ -737,11 +736,10 @@
 
 <!-- MOBILE APPOINTMENT CARD -->
 <div class="mobile-appt" id="appointment-mobile">
-  <iframe name="hidden_appt_iframe_mobile" id="hidden_appt_iframe_mobile" style="display:none;" onload="handleApptFormSubmit(this)"></iframe>
   <form class="appt-card"
         action="https://docs.google.com/forms/d/e/1FAIpQLSfbXH__k91EG4oE7_NubHQahPKPJ64r3shz1gJMN752z_9EdQ/formResponse"
         method="POST"
-        target="hidden_appt_iframe_mobile">
+        onsubmit="handleApptFormSubmit(event)">
     <h3><span style="font-style:normal">📅</span> अपॉइंटमेंट बुक करा</h3>
     <label>तुमचे नाव</label>
     <input type="text" name="entry.1720424357" placeholder="पूर्ण नाव" />
@@ -1201,17 +1199,28 @@
 </footer>
 
 <script>
-function handleApptFormSubmit(iframe) {
-  // Fires on iframe load; skip the initial blank load (no contentDocument src yet)
-  try {
-    if (!iframe.contentDocument && !iframe.contentWindow) return;
-  } catch(e) { return; }
-  // Find the parent form that targets this iframe
-  var form = document.querySelector('form[target="' + iframe.name + '"]');
-  if (!form) return;
-  // Only act after an actual submission (inputs will have values or the iframe src changes)
-  alert('तुमची अपॉइंटमेंट रिक्वेस्ट प्राप्त झाली आहे. हॉस्पिटलमधून लवकरच तुम्हाला कॉल येईल.');
-  form.reset();
+function handleApptFormSubmit(event) {
+  event.preventDefault(); // Stop the default page redirect
+  
+  var form = event.target;
+  var formData = new FormData(form);
+  var url = form.action;
+
+  // Send the data in the background using no-cors
+  fetch(url, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData
+  })
+  .then(function() {
+    // Show success message and clear the inputs
+    alert('तुमची अपॉइंटमेंट रिक्वेस्ट प्राप्त झाली आहे. हॉस्पिटलमधून लवकरच तुम्हाला कॉल येईल.');
+    form.reset();
+  })
+  .catch(function(error) {
+    console.error('Error submitting form:', error);
+    alert('काहीतरी चूक झाली. कृपया पुन्हा प्रयत्न करा किंवा आम्हाला थेट कॉल करा.');
+  });
 }
 </script>
 
