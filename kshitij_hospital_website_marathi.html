@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KSHITIJ Multispeciality & Maternity Hospital – Nanded</title>
+<meta name="description" content="KSHITIJ Multispeciality & Maternity Hospital in Shivaji Nagar, Nanded. 24/7 Emergency, Painless Delivery, NICU, OT. Call 1800 330 0000.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #1a9bd7;
+    --blue-dark: #1278a8;
+    --blue-light: #e4f4fc;
+    --blue-mid: #3db6ed;
+    --orange: #e8470a;
+    --orange-dark: #c23a08;
+    --orange-light: #fff0eb;
+    --red: #e8470a;
+    --green: #2d6a2d;
+    --green-light: #eaf3de;
+    --text: #1a1a2e;
+    --text-muted: #5a6275;
+    --border: #d4edf8;
+    --bg: #ffffff;
+    --bg-alt: #f3fafd;
+    --radius: 12px;
+    --shadow: 0 2px 16px rgba(26,155,215,0.10);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Hind', 'Noto Sans Devanagari', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  /* ── NAV ── */
+  .nav {
+    background: var(--blue);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 66px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(13,61,122,0.25);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-logo-icon {
+    width: 38px; height: 38px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .nav-logo-icon i { color: var(--blue); font-size: 20px; }
+  .nav-logo-name {
+    font-size: 18px; font-weight: 700; letter-spacing: 0.5px;
+    font-family: 'Noto Serif Devanagari', serif;
+    line-height: 1.15;
+  }
+  .brand-marathi-orange { color: #ffa070; }
+  .brand-marathi-blue-sub { color: rgba(255,255,255,0.85) !important; font-size: 9.5px !important; letter-spacing: 0.2px; }
+  .nav-logo-sub { font-size: 10px; color: rgba(255,255,255,0.75); letter-spacing: 0.3px; font-family: 'Hind', 'Noto Sans Devanagari', sans-serif; }
+  .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-links a { color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta {
+    background: var(--orange); color: #fff;
+    padding: 7px 16px; border-radius: 7px;
+    font-size: 13px; font-weight: 600;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--orange-dark); }
+  .hamburger {
+    display: none; background: none; border: none;
+    cursor: pointer; padding: 4px;
+  }
+  .hamburger i { color: #fff; font-size: 26px; }
+  .mobile-menu {
+    display: none;
+    background: var(--blue-dark);
+    flex-direction: column;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: rgba(255,255,255,0.88);
+    font-size: 14px; font-weight: 500;
+    padding: 13px 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex; align-items: center; gap: 10px;
+    transition: background 0.15s;
+  }
+  .mobile-menu a:hover { background: rgba(255,255,255,0.06); }
+  .mobile-menu a.cta-mobile {
+    background: #fff; color: var(--blue);
+    justify-content: center; margin: 1rem 1.5rem;
+    border-radius: 8px; border: none; font-weight: 700;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #1a9bd7 0%, #0f6fa0 60%, #0d5880 100%);
+    padding: 3.5rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -80px; top: -80px;
+    width: 400px; height: 400px;
+    background: rgba(232,71,10,0.07);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: 80px; bottom: -120px;
+    width: 280px; height: 280px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: flex-start;
+    gap: 2.5rem; position: relative; z-index: 1;
+  }
+  .hero-left { flex: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.14);
+    color: #fff; font-size: 12px; font-weight: 500;
+    padding: 5px 12px; border-radius: 20px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .hero-title {
+    font-size: 32px; font-weight: 700; color: #fff;
+    line-height: 1.25; margin-bottom: 0.75rem;
+    font-family: 'Noto Serif Devanagari', 'Tiro Devanagari Hindi', serif;
+  }
+  .hero-title em { font-style: italic; color: #ffa070; }
+  .hero-sub {
+    font-size: 14px; color: rgba(255,255,255,0.82);
+    line-height: 1.75; margin-bottom: 1.75rem;
+    max-width: 500px;
+  }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-white {
+    background: var(--orange); color: #fff;
+    padding: 11px 22px; border-radius: 8px;
+    font-size: 13px; font-weight: 700;
+    display: inline-flex; align-items: center; gap: 7px;
+    cursor: pointer; border: none; transition: transform 0.15s, background 0.2s;
+  }
+  .btn-white:hover { transform: translateY(-1px); background: var(--orange-dark); }
+  .btn-ghost {
+    background: transparent; color: #fff;
+    padding: 11px 22px; border-radius: 8px;
+    font-size: 13px; font-weight: 600;
+    border: 1.5px solid rgba(255,255,255,0.55);
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 7px;
+    transition: border-color 0.2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.9); }
+  .hero-stats {
+    display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;
+  }
+  .hero-stat .num { font-size: 24px; font-weight: 700; color: #ffa070; }
+  .hero-stat .lbl { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 1px; }
+  .hero-right { flex: 0 0 260px; }
+  .appt-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 1.4rem;
+    box-shadow: 0 8px 32px rgba(13,61,122,0.25);
+  }
+  .appt-card h3 {
+    font-size: 14px; font-weight: 700; color: var(--blue);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .appt-card label { font-size: 11px; color: var(--text-muted); display: block; margin-bottom: 3px; }
+  .appt-card input, .appt-card select {
+    width: 100%; padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 7px; font-size: 13px;
+    margin-bottom: 9px; color: var(--text);
+    background: #fff; font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  .appt-card input:focus, .appt-card select:focus {
+    outline: none; border-color: var(--blue-mid);
+  }
+  .appt-card button {
+    width: 100%; background: var(--orange);
+    color: #fff; border: none;
+    padding: 10px; border-radius: 7px;
+    font-size: 13px; font-weight: 700;
+    cursor: pointer; font-family: inherit;
+    transition: background 0.2s;
+  }
+  .appt-card button:hover { background: var(--orange-dark); }
+
+  /* ── EMERGENCY BAR ── */
+  .emergency-bar {
+    background: var(--red);
+    padding: 0.9rem 2rem;
+    display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
+  }
+  .em-left { display: flex; align-items: center; gap: 12px; color: #fff; }
+  .em-left i { font-size: 26px; flex-shrink: 0; }
+  .em-title { font-size: 14px; font-weight: 700; }
+  .em-sub { font-size: 12px; opacity: 0.85; }
+  .em-nums { display: flex; gap: 10px; flex-wrap: wrap; }
+  .em-num {
+    background: rgba(255,255,255,0.18);
+    color: #fff; padding: 6px 14px;
+    border-radius: 7px; font-size: 14px; font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+
+  /* ── SECTIONS ── */
+  .section { padding: 3.5rem 2rem; }
+  .section-alt { background: var(--bg-alt); }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-head { text-align: center; margin-bottom: 2.5rem; }
+  .section-head h2 {
+    font-size: 26px; font-weight: 700;
+    font-family: 'Noto Serif Devanagari', 'Tiro Devanagari Hindi', serif;
+    margin-bottom: 0.4rem;
+  }
+  .section-head p { font-size: 14px; color: var(--text-muted); }
+  .blue-bar {
+    width: 44px; height: 3px;
+    background: var(--blue); border-radius: 2px;
+    margin: 0.6rem auto 0;
+  }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    background: linear-gradient(135deg, #1a9bd7 0%, #0f6fa0 100%);
+    padding: 2.5rem 2rem;
+  }
+  .about-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap;
+  }
+  .about-text { flex: 1; min-width: 260px; }
+  .about-text h2 {
+    font-size: 22px; font-weight: 700; color: #fff;
+    font-family: 'Noto Serif Devanagari', 'Tiro Devanagari Hindi', serif; margin-bottom: 0.75rem;
+  }
+  .about-text p { font-size: 14px; color: rgba(255,255,255,0.88); line-height: 1.75; }
+  .about-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 1.25rem; }
+  .about-badge {
+    background: rgba(255,255,255,0.15);
+    color: #fff; font-size: 12px; font-weight: 500;
+    padding: 5px 14px; border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.25);
+    display: flex; align-items: center; gap: 5px;
+  }
+  .about-highlights {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; flex: 0 0 280px;
+  }
+  .hl-card {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px; padding: 1rem;
+    text-align: center;
+  }
+  .hl-card i { font-size: 24px; color: #ffa070; margin-bottom: 6px; }
+  .hl-card .hl-val { font-size: 18px; font-weight: 700; color: #ffa070; }
+  .hl-card .hl-lbl { font-size: 11px; color: rgba(255,255,255,0.75); }
+
+  /* ── DEPARTMENTS ── */
+  .dept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .dept-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.2rem;
+    text-align: center; cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  }
+  .dept-card:hover {
+    border-color: var(--blue-mid);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+  }
+  .dept-icon {
+    width: 48px; height: 48px;
+    background: var(--blue-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 10px;
+  }
+  .dept-icon i { color: var(--blue); font-size: 22px; }
+  .dept-name { font-size: 13px; font-weight: 600; color: var(--text); }
+  .dept-tag { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .svc-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.4rem;
+    display: flex; align-items: flex-start; gap: 12px;
+    transition: box-shadow 0.2s;
+  }
+  .svc-card:hover { box-shadow: var(--shadow); }
+  .svc-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--blue-light);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .svc-icon i { color: var(--blue); font-size: 22px; }
+  .svc-title { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+  .svc-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+
+  /* ── DOCTORS ── */
+  .doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 14px;
+  }
+  .doc-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.4rem;
+    text-align: center;
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .doc-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+  .doc-avatar {
+    width: 60px; height: 60px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 10px; font-size: 18px; font-weight: 700;
+  }
+  .doc-name { font-size: 14px; font-weight: 700; }
+  .doc-spec { font-size: 12px; color: var(--blue); font-weight: 600; margin: 3px 0; }
+  .doc-exp { font-size: 11px; color: var(--text-muted); }
+  .doc-days {
+    display: inline-block; font-size: 11px;
+    background: var(--green-light); color: var(--green);
+    padding: 3px 9px; border-radius: 20px; margin-top: 7px;
+    font-weight: 600;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .testi-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+    position: relative;
+  }
+  .testi-quote {
+    font-size: 36px; line-height: 1;
+    color: var(--blue-light); font-family: 'Noto Serif Devanagari', serif;
+    margin-bottom: 0.5rem;
+  }
+  .testi-stars { color: #f0a500; font-size: 14px; margin-bottom: 8px; }
+  .testi-text {
+    font-size: 13px; color: var(--text-muted);
+    line-height: 1.85; margin-bottom: 1rem;
+    font-family: 'Hind', 'Noto Sans Devanagari', sans-serif; font-style: normal;
+  }
+  .testi-author { display: flex; align-items: center; gap: 10px; }
+  .testi-av {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--blue-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: var(--blue); flex-shrink: 0;
+  }
+  .testi-name { font-size: 13px; font-weight: 700; }
+  .testi-loc { font-size: 11px; color: var(--text-muted); }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  }
+  .contact-info h3 { font-size: 18px; font-weight: 700; margin-bottom: 1.25rem; }
+  .cinfo-row {
+    display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem;
+  }
+  .cinfo-row i { color: var(--blue); font-size: 20px; margin-top: 1px; flex-shrink: 0; }
+  .cinfo-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .cinfo-val { font-size: 14px; font-weight: 600; line-height: 1.5; margin-top: 2px; }
+  .map-box {
+    background: var(--blue-light);
+    border-radius: var(--radius); height: 260px;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 8px; color: var(--blue);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .map-box iframe { width: 100%; height: 100%; border: none; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: linear-gradient(135deg, #0d5880 0%, #1278a8 100%);
+    padding: 2rem;
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    line-height: 1.9;
+  }
+  .footer-name { font-size: 15px; font-weight: 700; color: #ffa070; margin-bottom: 4px; }
+  .footer-links { display: flex; justify-content: center; gap: 1.25rem; margin: 8px 0; flex-wrap: wrap; }
+  .footer-links a { color: rgba(255,255,255,0.65); font-size: 12px; }
+  .footer-links a:hover { color: #ffa070; }
+
+  /* ── MOBILE APPT (shown only on mobile) ── */
+  .mobile-appt { display: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    .nav { padding: 0 1rem; }
+
+    .hero { padding: 2rem 1rem; }
+    .hero-inner { flex-direction: column; gap: 1.5rem; }
+    .hero-right { display: none; }
+    .hero-title { font-size: 24px; }
+    .hero-stats { gap: 1.25rem; }
+    .hero-btns { flex-direction: column; }
+    .btn-white, .btn-ghost { width: 100%; justify-content: center; }
+
+    .mobile-appt {
+      display: block;
+      background: var(--blue-dark);
+      padding: 0 1rem 1.5rem;
+    }
+
+    .emergency-bar { padding: 0.9rem 1rem; flex-direction: column; align-items: flex-start; }
+    .em-nums { width: 100%; }
+    .em-num { flex: 1; justify-content: center; font-size: 13px; }
+
+    .section { padding: 2.5rem 1rem; }
+    .about-strip { padding: 2rem 1rem; }
+    .about-highlights { grid-template-columns: 1fr 1fr; flex: 0 0 auto; width: 100%; }
+
+    .dept-grid { grid-template-columns: repeat(2, 1fr); }
+    .doctors-grid { grid-template-columns: repeat(2, 1fr); }
+    .testi-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+
+    .section-head h2 { font-size: 22px; }
+    .map-box { height: 200px; }
+  }
+
+  @media (max-width: 420px) {
+    .dept-grid { grid-template-columns: repeat(2, 1fr); }
+    .doctors-grid { grid-template-columns: 1fr 1fr; }
+    .about-highlights { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <!-- SVG logo mimicking actual Kshitij signboard -->
+    <svg width="36" height="40" viewBox="0 0 36 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+      <!-- Blue hands -->
+      <path d="M6 28 Q2 22 4 16 Q6 10 12 12 Q10 18 11 22 Z" fill="#1a9bd7"/>
+      <path d="M30 28 Q34 22 32 16 Q30 10 24 12 Q26 18 25 22 Z" fill="#1a9bd7"/>
+      <path d="M8 30 Q18 36 28 30 Q26 24 18 22 Q10 24 8 30 Z" fill="#1a9bd7" opacity="0.8"/>
+      <!-- Orange flame/droplet -->
+      <path d="M18 2 Q22 8 22 13 Q22 18 18 20 Q14 18 14 13 Q14 8 18 2 Z" fill="#e8470a"/>
+      <circle cx="18" cy="14" r="3" fill="#fff" opacity="0.4"/>
+    </svg>
+    <div>
+      <div class="nav-logo-name"><span class="brand-marathi-orange">क्षितिज</span></div>
+      <div class="nav-logo-sub brand-marathi-blue-sub">मल्टीस्पेशालिटी हॉस्पिटल</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">आमच्याबद्दल</a>
+    <a href="#departments">विभाग</a>
+    <a href="#services">सेवा</a>
+    <a href="#doctors">डॉक्टर</a>
+    <a href="#testimonials">अनुभव</a>
+    <a href="#contact">संपर्क</a>
+    <a href="#appointment" class="nav-cta">अपॉइंटमेंट घ्या</a>
+  </div>
+  <button class="hamburger" onclick="document.getElementById('mmenu').classList.toggle('open')" aria-label="Menu">
+    <span style="font-style:normal">☰</span></i>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mmenu">
+  <a href="#about" onclick="document.getElementById('mmenu').classList.remove('open')"><span style="font-style:normal">ℹ️</span> आमच्याबद्दल</a>
+  <a href="#departments" onclick="document.getElementById('mmenu').classList.remove('open')"><span style="font-style:normal">🏥</span> विभाग</a>
+  <a href="#services" onclick="document.getElementById('mmenu').classList.remove('open')"><span style="font-style:normal">🩺</span> सेवा</a>
+  <a href="#doctors" onclick="document.getElementById('mmenu').classList.remove('open')"><span style="font-style:normal">👤</span> डॉक्टर</a>
+  <a href="#testimonials" onclick="document.getElementById('mmenu').classList.remove('open')"><span style="font-style:normal">⭐</span> अनुभव</a>
+  <a href="#contact" onclick="document.getElementById('mmenu').classList.remove('open')"><span style="font-style:normal">📍</span> संपर्क</a>
+  <a href="#appointment" class="cta-mobile" onclick="document.getElementById('mmenu').classList.remove('open')"><span style="font-style:normal">📅</span> अपॉइंटमेंट घ्या</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge"><span style="font-style:normal">📍</span> शिवाजी नगर, नांदेड – महाराष्ट्र</div>
+      <h1 class="hero-title"><span style="color:#ffa070;">क्षितिज</span> हॉस्पिटलमध्ये<br><em>तुमचे स्वागत आहे.</em></h1>
+      <p class="hero-sub">क्षितिज मल्टीस्पेशालिटी अँड मॅटर्निटी हॉस्पिटल — नांदेडमधील विश्वासार्ह, परवडणारी आणि अत्याधुनिक आरोग्यसेवा. वेदनारहित प्रसूती, NICU, OT आणि २४/७ इमर्जन्सी सेवा एकाच छताखाली.</p>
+      <div class="hero-btns">
+        <a href="#appointment" class="btn-white"><span style="font-style:normal">📅</span> अपॉइंटमेंट घ्या</a>
+        <a href="tel:18003300000" class="btn-ghost"><span style="font-style:normal">📞</span> 1800 330 0000</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">२४/७</div><div class="lbl">इमर्जन्सी</div></div>
+        <div class="hero-stat"><div class="num">१०+</div><div class="lbl">विशेषता</div></div>
+        <div class="hero-stat"><div class="num">६ दिवस</div><div class="lbl">OPD साप्ताहिक</div></div>
+        <div class="hero-stat"><div class="num">१००%</div><div class="lbl">परवडणारे</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="appt-card" id="appointment">
+        <h3><span style="font-style:normal">📅</span> अपॉइंटमेंट बुक करा</h3>
+        <label>तुमचे नाव</label>
+        <input type="text" placeholder="पूर्ण नाव" />
+        <label>मोबाईल नंबर</label>
+        <input type="tel" placeholder="+91 XXXXX XXXXX" />
+        <label>विभाग निवडा</label>
+        <select>
+          <option value="">विभाग निवडा</option>
+          <option>स्त्रीरोग व प्रसूती</option>
+          <option>सामान्य औषध</option>
+          <option>सामान्य शस्त्रक्रिया</option>
+          <option>बालरोग व NICU</option>
+          <option>अस्थिरोग</option>
+          <option>हृदयरोग</option>
+          <option>मज्जातंत्र विज्ञान</option>
+          <option>नेत्ररोग</option>
+        </select>
+        <label>पसंतीची तारीख</label>
+        <input type="date" />
+        <button>अपॉइंटमेंट निश्चित करा</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOBILE APPOINTMENT CARD -->
+<div class="mobile-appt" id="appointment-mobile">
+  <div class="appt-card">
+    <h3><span style="font-style:normal">📅</span> अपॉइंटमेंट बुक करा</h3>
+    <label>तुमचे नाव</label>
+    <input type="text" placeholder="पूर्ण नाव" />
+    <label>मोबाईल नंबर</label>
+    <input type="tel" placeholder="+91 XXXXX XXXXX" />
+    <label>विभाग निवडा</label>
+    <select>
+      <option value="">विभाग निवडा</option>
+      <option>स्त्रीरोग व प्रसूती</option>
+      <option>सामान्य औषध</option>
+      <option>बालरोग व NICU</option>
+      <option>अस्थिरोग</option>
+      <option>हृदयरोग</option>
+    </select>
+    <label>पसंतीची तारीख</label>
+    <input type="date" />
+    <button>अपॉइंटमेंट निश्चित करा</button>
+  </div>
+</div>
+
+<!-- EMERGENCY BAR -->
+<div class="emergency-bar">
+  <div class="em-left">
+    <span style="font-style:normal">🚑</span>
+    <div>
+      <div class="em-title">२४/७ इमर्जन्सी सेवा उपलब्ध</div>
+      <div class="em-sub">सुसज्ज इमर्जन्सी वॉर्ड — दिवस असो वा रात्र, सदैव तत्पर</div>
+    </div>
+  </div>
+  <div class="em-nums">
+    <a href="tel:18003300000" class="em-num"><span style="font-style:normal">📞</span> 1800 330 0000 (टोल फ्री)</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-strip" id="about">
+  <div class="about-inner">
+    <div class="about-text">
+      <h2>विश्वासार्ह काळजी, परवडणारी सेवा</h2>
+      <p><strong style="color:#ffa070;">क्षितिज मल्टीस्पेशालिटी अँड मॅटर्निटी हॉस्पिटल</strong> हे नांदेडमधील एक अग्रगण्य रुग्णालय आहे. डॉ. राजेंद्र जाधव आणि डॉ. सरस्वती जाधव यांच्या नेतृत्वाखाली हे रुग्णालय <strong style="color:#ffa070;">परवडणारी, दर्जेदार आणि संवेदनशील</strong> आरोग्यसेवा देते. अत्याधुनिक OT, प्रसूतीकक्ष, NICU आणि पुनर्प्राप्ती कक्षासह, वेदनारहित प्रसूती आणि NST (नॉन-स्ट्रेस टेस्ट) यांसारख्या विशेष सेवा येथे उपलब्ध आहेत — २४/७.</p>
+      <div class="about-badges">
+        <span class="about-badge"><span style="font-style:normal">🕐</span> २४/७ रुग्णालय</span>
+        <span class="about-badge"><span style="font-style:normal">💊</span> २४/७ फार्मसी</span>
+        <span class="about-badge"><span style="font-style:normal">❤️</span> वेदनारहित प्रसूती</span>
+        <span class="about-badge"><span style="font-style:normal">₹</span> परवडणारे</span>
+      </div>
+    </div>
+    <div class="about-highlights">
+      <div class="hl-card">
+        <span style="font-style:normal">🏥</span>
+        <div class="hl-val">OT</div>
+        <div class="hl-lbl">ऑपरेशन थिएटर</div>
+      </div>
+      <div class="hl-card">
+        <span style="font-style:normal">👶</span>
+        <div class="hl-val">NICU</div>
+        <div class="hl-lbl">नवजात शिशू ICU</div>
+      </div>
+      <div class="hl-card">
+        <span style="font-style:normal">💓</span>
+        <div class="hl-val">NST</div>
+        <div class="hl-lbl">नॉन-स्ट्रेस टेस्ट</div>
+      </div>
+      <div class="hl-card">
+        <span style="font-style:normal">🚑</span>
+        <div class="hl-val">२४/७</div>
+        <div class="hl-lbl">इमर्जन्सी</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPARTMENTS -->
+<section class="section section-alt" id="departments">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>आमचे विभाग</h2>
+      <p>एकाच छताखाली सर्व प्रमुख वैद्यकीय विशेषांची सर्वसमावेशक काळजी</p>
+      <div class="blue-bar"></div>
+    </div>
+    <div class="dept-grid">
+      <div class="dept-card">
+        <div class="dept-icon"><span style="font-style:normal">🍼</span></div>
+        <div class="dept-name">स्त्रीरोग व प्रसूती</div>
+        <div class="dept-tag">वेदनारहित प्रसूती व NST</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><span style="font-style:normal">👶</span></div>
+        <div class="dept-name">बालरोग व NICU</div>
+        <div class="dept-tag">नवजात व बाल आरोग्य सेवा</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><span style="font-style:normal">🩺</span></div>
+        <div class="dept-name">सामान्य औषध</div>
+        <div class="dept-tag">अंतर्गत औषधोपचार</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><span style="font-style:normal">🔬</span></div>
+        <div class="dept-name">सामान्य शस्त्रक्रिया</div>
+        <div class="dept-tag">शस्त्रक्रिया प्रक्रिया</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><span style="font-style:normal">🦴</span></div>
+        <div class="dept-name">अस्थिरोग</div>
+        <div class="dept-tag">हाड व सांधे उपचार</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><span style="font-style:normal">💓</span></div>
+        <div class="dept-name">हृदयरोग</div>
+        <div class="dept-tag">हृदय उपचार</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><span style="font-style:normal">🧠</span></div>
+        <div class="dept-name">मज्जातंत्र विज्ञान</div>
+        <div class="dept-tag">मेंदू व नसांचे उपचार</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><span style="font-style:normal">👁️</span></div>
+        <div class="dept-name">नेत्ररोग</div>
+        <div class="dept-tag">डोळ्यांची काळजी</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><span style="font-style:normal">🧪</span></div>
+        <div class="dept-name">पॅथॉलॉजी व लॅब</div>
+        <div class="dept-tag">निदान चाचण्या</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon"><span style="font-style:normal">🚑</span></div>
+        <div class="dept-name">इमर्जन्सी व ICU</div>
+        <div class="dept-tag">गंभीर काळजी २४/७</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>आमच्या प्रमुख सेवा</h2>
+      <p>एकाच छताखाली संपूर्ण आरोग्यसेवेसाठी अत्याधुनिक सुविधा</p>
+      <div class="blue-bar"></div>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon"><span style="font-style:normal">❤️</span></div>
+        <div>
+          <div class="svc-title">वेदनारहित प्रसूती</div>
+          <div class="svc-desc">तज्ज्ञ स्त्रीरोगतज्ज्ञ आणि प्रशिक्षित नर्सिंग कर्मचाऱ्यांसह एपिड्युरल व नैसर्गिक वेदनारहित प्रसूतीचे पर्याय उपलब्ध.</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><span style="font-style:normal">👶</span></div>
+        <div>
+          <div class="svc-title">NICU काळजी</div>
+          <div class="svc-desc">अकाली जन्मलेल्या व गंभीर आजारी नवजात शिशूंसाठी विशेष नवजात शिशू गहन काळजी — चोवीस तास देखरेख.</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><span style="font-style:normal">🏥</span></div>
+        <div>
+          <div class="svc-title">ऑपरेशन थिएटर</div>
+          <div class="svc-desc">आधुनिक शस्त्रक्रिया उपकरणे व अनुभवी शल्यचिकित्सक टीमसह सुसज्ज, निर्जंतुक OT — सर्व प्रक्रियांसाठी.</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><span style="font-style:normal">🚑</span></div>
+        <div>
+          <div class="svc-title">इमर्जन्सी विभाग</div>
+          <div class="svc-desc">तीव्र वैद्यकीय व आघात प्रकरणे हाताळण्यासाठी जलद प्रतिसाद टीमसह सुसज्ज २४/७ इमर्जन्सी वॉर्ड.</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><span style="font-style:normal">💓</span></div>
+        <div>
+          <div class="svc-title">NST (नॉन-स्ट्रेस टेस्ट)</div>
+          <div class="svc-desc">गर्भारपणात आई आणि बाळ दोघांचेही आरोग्य सुनिश्चित करण्यासाठी गर्भस्थ शिशूचे निरीक्षण.</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><span style="font-style:normal">💊</span></div>
+        <div>
+          <div class="svc-title">२४/७ फार्मसी</div>
+          <div class="svc-desc">रुग्णालयातील इन-हाऊस फार्मसी चोवीस तास चालू — रुग्णांना औषधांसाठी बाहेर जाण्याची गरज नाही.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section class="section section-alt" id="doctors">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>आमचे तज्ज्ञ डॉक्टर</h2>
+      <p>अत्यंत पात्र डॉक्टर आठवड्यातील ६ दिवस उपलब्ध — सोम ते शनि</p>
+      <div class="blue-bar"></div>
+    </div>
+    <div class="doctors-grid">
+      <div class="doc-card" style="border:2px solid #e8470a;">
+        <div style="background:#e8470a;color:#fff;font-size:10px;font-weight:700;text-align:center;padding:3px 8px;border-radius:20px;margin:0 auto 10px;display:inline-block;">संस्थापक व संचालक</div>
+        <div class="doc-avatar" style="background:#fff0eb;color:#e8470a;font-size:20px;">👨‍⚕️</div>
+        <div class="doc-name">डॉ. राजेंद्र जाधव</div>
+        <div class="doc-spec">जनरल सर्जन व फिजिशियन</div>
+        <div class="doc-exp">शस्त्रक्रिया · इमर्जन्सी · OPD</div>
+        <div class="doc-days">सोम – शनि</div>
+      </div>
+      <div class="doc-card" style="border:2px solid #e8470a;">
+        <div style="background:#e8470a;color:#fff;font-size:10px;font-weight:700;text-align:center;padding:3px 8px;border-radius:20px;margin:0 auto 10px;display:inline-block;">संस्थापक व संचालक</div>
+        <div class="doc-avatar" style="background:#e4f4fc;color:#1a9bd7;font-size:20px;">👩‍⚕️</div>
+        <div class="doc-name">डॉ. सरस्वती जाधव</div>
+        <div class="doc-spec">स्त्रीरोगतज्ज्ञ व प्रसूतिशास्त्रज्ञ</div>
+        <div class="doc-exp">प्रसूती · वेदनारहित डिलिव्हरी · NST</div>
+        <div class="doc-days">सोम – शनि</div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;font-size:13px;color:var(--text-muted);">
+      <span style="font-style:normal">ℹ️</span>
+      संपूर्ण डॉक्टर वेळापत्रकासाठी <strong>1800 330 0000</strong> वर कॉल करा किंवा रुग्णालयास भेट द्या.
+    </p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>आमच्या रुग्णांचे अनुभव</h2>
+      <p>क्षितिज हॉस्पिटलमधील प्रत्यक्ष अनुभवातून आलेले खरे शब्द</p>
+      <div class="blue-bar"></div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">क्षितिज हॉस्पिटलमध्ये आल्यापासूनच मला खूप आपुलकीने वागणूक मिळाली. इमर्जन्सी टीमने अत्यंत वेगाने आणि कुशलतेने काम केले. डॉक्टरांनी प्रत्येक गोष्ट सविस्तर समजावून सांगितली. रुग्णालयाच्या आधुनिक सुविधांमुळे मन शांत राहिले.</p>
+        <div class="testi-author">
+          <div class="testi-av">र</div>
+          <div><div class="testi-name">रुग्ण</div><div class="testi-loc">नांदेड</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">क्षितिज हॉस्पिटल हे खरोखरच एक आदर्श रुग्णालय आहे. येथे सर्व वैद्यकीय सेवा परवडणाऱ्या किमतीत मिळतात आणि गुणवत्तेशी कोणतीही तडजोड केली जात नाही. ऑपरेशन थिएटर अत्याधुनिक होते आणि डॉक्टर व कर्मचारी अतिशय कुशल व व्यावसायिक होते.</p>
+        <div class="testi-author">
+          <div class="testi-av">र</div>
+          <div><div class="testi-name">रुग्ण</div><div class="testi-loc">नांदेड</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">रात्री उशिरा इमर्जन्सीमुळे रुग्णालयात यावे लागले, पण टीमने किती लवकर सगळे हाताळले हे पाहून आश्चर्य वाटले. इमर्जन्सी विभाग अत्यंत कार्यक्षम आहे आणि डॉक्टर कोणत्याही वेळी मदतीसाठी तत्पर असतात.</p>
+        <div class="testi-author">
+          <div class="testi-av">र</div>
+          <div><div class="testi-name">रुग्ण</div><div class="testi-loc">मराठवाडा</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section-alt" id="contact">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>आम्हाला भेटा</h2>
+      <p>शिवाजी नगर, नांदेड येथे स्थित — सर्व भागांतून सहज पोहोचता येणारे</p>
+      <div class="blue-bar"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>संपर्क माहिती</h3>
+        <div class="cinfo-row">
+          <span style="font-style:normal">📍</span>
+          <div>
+            <div class="cinfo-label">पत्ता</div>
+            <div class="cinfo-val">संजीवनी हॉस्पिटलच्या समोर,<br>शिवाजी नगर, नांदेड – ४३१६०१,<br>महाराष्ट्र</div>
+          </div>
+        </div>
+        <div class="cinfo-row">
+          <span style="font-style:normal">📞</span>
+          <div>
+            <div class="cinfo-label">टोल फ्री / अपॉइंटमेंट</div>
+            <div class="cinfo-val"><a href="tel:18003300000" style="color:var(--orange)">1800 330 0000</a></div>
+          </div>
+        </div>
+        <div class="cinfo-row">
+          <span style="font-style:normal">🚑</span>
+          <div>
+            <div class="cinfo-label">इमर्जन्सी (२४/७)</div>
+            <div class="cinfo-val">चोवीस तास उपलब्ध</div>
+          </div>
+        </div>
+        <div class="cinfo-row">
+          <span style="font-style:normal">🌐</span>
+          <div>
+            <div class="cinfo-label">वेबसाइट</div>
+            <div class="cinfo-val"><a href="https://www.kshitijmultispecialityhospital.com" target="_blank" style="color:var(--blue)">kshitijmultispecialityhospital.com</a></div>
+          </div>
+        </div>
+        <div class="cinfo-row">
+          <span style="font-style:normal">🕐</span>
+          <div>
+            <div class="cinfo-label">OPD वेळ</div>
+            <div class="cinfo-val">सोम–शनि: डॉक्टर ६ दिवस उपलब्ध<br>इमर्जन्सी: २४/७</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="map-box">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.0!2d77.3119!3d19.1542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd1d7a6b6b6b6b7%3A0x0!2sShivaji+Nagar%2C+Nanded%2C+Maharashtra!5e0!3m2!1sen!2sin!4v1"
+            allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="क्षितिज हॉस्पिटल स्थान नकाशा">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-name" style="color:#ffa070; font-family:'Noto Serif Devanagari',serif; font-size:17px;">क्षितिज मल्टीस्पेशालिटी अँड मॅटर्निटी हॉस्पिटल</div>
+  <div>संजीवनी हॉस्पिटलसमोर, शिवाजी नगर, नांदेड – ४३१६०१, महाराष्ट्र</div>
+  <div>टोल फ्री: 1800 330 0000 &nbsp;|&nbsp; <a href="https://www.kshitijmultispecialityhospital.com" style="color:rgba(255,255,255,0.65)">kshitijmultispecialityhospital.com</a></div>
+  <div class="footer-links">
+    <a href="#about">आमच्याबद्दल</a>
+    <a href="#departments">विभाग</a>
+    <a href="#doctors">डॉक्टर</a>
+    <a href="#contact">संपर्क</a>
+  </div>
+  <div style="margin-top:4px;opacity:0.5">© २०२६ क्षितिज हॉस्पिटल. सर्व हक्क राखीव.</div>
+</footer>
+
+</body>
+</html>
