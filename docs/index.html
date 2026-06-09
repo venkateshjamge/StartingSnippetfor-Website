@@ -681,6 +681,10 @@
   <a href="#appointment" class="cta-mobile" onclick="document.getElementById('mmenu').classList.remove('open'); scrollToAppt(event)"><span style="font-style:normal">📅</span> अपॉइंटमेंट घ्या</a>
 </div>
 
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
+        onload="if(submitted) { alert('तुमची अपॉइंटमेंट यशस्वीरीत्या बुक झाली आहे! (Appointment Booked!)'); window.location.reload(); }">
+</iframe>
+
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-left">
@@ -699,43 +703,33 @@
       </div>
     </div>
     <div class="hero-right">
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
-            onload="if(submitted) { alert('तुमची अपॉइंटमेंट यशस्वीरीत्या बुक झाली आहे! (Appointment Booked!)'); window.location.reload(); }">
-    </iframe>
-
-    <form class="appt-card" id="appointment"
-          action="https://docs.google.com/forms/d/e/1FAIpQLSfbXH__k91EG4oE7_NubHQahPKPJ64r3shz1gJMN752z_9EdQ/formResponse"
-          method="POST"
-          target="hidden_iframe"
-          onsubmit="submitted=true;">
-          
-        <h3><span style="font-style:normal">📅</span> अपॉइंटमेंट बुक करा</h3>
-        
-        <label>तुमचे नाव</label>
-        <input type="text" name="entry.1720424357" placeholder="पूर्ण नाव" required />
-        
-        <label>मोबाईल नंबर</label>
-        <input type="tel" name="entry.1833859839" placeholder="+91 XXXXX XXXXX" required />
-        
-        <label>विभाग निवडा</label>
-        <select name="entry.420975868" required>
-            <option value="">विभाग निवडा</option>
-            <option value="स्त्रीरोग व प्रसूती">स्त्रीरोग व प्रसूती</option>
-            <option value="सामान्य औषध">सामान्य औषध</option>
-            <option value="सामान्य शस्त्रक्रिया">सामान्य शस्त्रक्रिया</option>
-            <option value="बालरोग">बालरोग</option>
-            <option value="अस्थिरोग">अस्थिरोग</option>
-            <option value="हृदयरोग">हृदयरोग</option>
-            <option value="मज्जातंत्र विज्ञान">मज्जातंत्र विज्ञान</option>
-            <option value="नेत्ररोग">नेत्ररोग</option>
-        </select>
-        
-        <label>पसंतीची तारीख</label>
-        <input type="date" name="entry.976180284" required />
-        
-        <button type="submit">अपॉइंटमेंट निश्चित करा</button>
-    </form>
-</div>
+      <form class="appt-card" id="appointment"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSfbXH__k91EG4oE7_NubHQahPKPJ64r3shz1gJMN752z_9EdQ/formResponse"
+            method="POST"
+            target="hidden_iframe"
+            onsubmit="submitted=true;">
+          <h3><span style="font-style:normal">📅</span> अपॉइंटमेंट बुक करा</h3>
+          <label>तुमचे नाव</label>
+          <input type="text" name="entry.1720424357" placeholder="पूर्ण नाव" required />
+          <label>मोबाईल नंबर</label>
+          <input type="tel" name="entry.1833859839" placeholder="+91 XXXXX XXXXX" required />
+          <label>विभाग निवडा</label>
+          <select name="entry.420975868" required>
+              <option value="">विभाग निवडा</option>
+              <option value="स्त्रीरोग व प्रसूती">स्त्रीरोग व प्रसूती</option>
+              <option value="सामान्य औषध">सामान्य औषध</option>
+              <option value="सामान्य शस्त्रक्रिया">सामान्य शस्त्रक्रिया</option>
+              <option value="बालरोग">बालरोग</option>
+              <option value="अस्थिरोग">अस्थिरोग</option>
+              <option value="हृदयरोग">हृदयरोग</option>
+              <option value="मज्जातंत्र विज्ञान">मज्जातंत्र विज्ञान</option>
+              <option value="नेत्ररोग">नेत्ररोग</option>
+          </select>
+          <label>पसंतीची तारीख</label>
+          <input type="date" name="entry.976180284" required />
+          <button type="submit">अपॉइंटमेंट निश्चित करा</button>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -755,9 +749,12 @@
       <option value="">विभाग निवडा</option>
       <option value="स्त्रीरोग व प्रसूती">स्त्रीरोग व प्रसूती</option>
       <option value="सामान्य औषध">सामान्य औषध</option>
+      <option value="सामान्य शस्त्रक्रिया">सामान्य शस्त्रक्रिया</option>
       <option value="बालरोग">बालरोग</option>
       <option value="अस्थिरोग">अस्थिरोग</option>
       <option value="हृदयरोग">हृदयरोग</option>
+      <option value="मज्जातंत्र विज्ञान">मज्जातंत्र विज्ञान</option>
+      <option value="नेत्ररोग">नेत्ररोग</option>
     </select>
     <label>पसंतीची तारीख</label>
     <input type="date" name="entry.976180284" required />
@@ -1058,7 +1055,7 @@
         <div class="testi-card">
           <div class="testi-quote">"</div>
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">क्षितिज हॉस्पिटलमध्ये आल्यापासूनच मला खूप आपुलकीने वागणूक मिळाली. इमर्जन्सी टीमने अत्यंत वेगाने आणि कुशलतेने काम केले. डॉक्टरांनी प्रत्येक गोष्ट सविस्तर समजावून सांगितली. रुग्णालयाच्या आधुनिक सुविधांमुळे मन शांत राहिले.</p>
+          <p class="testi-text">क्षितिज हॉस्पिटलमध्ये आल्यापासूनच मला खूप आपुलकीने वागणूक मिळाली. इमर्जन्सी टीमने अत्यंत वेगाने आणि कुशलतेने काम केले. डॉक्टरांनी प्रत्येक गोष्ट सविस्तर समजावून सांगितली.</p>
           <div class="testi-author">
             <div class="testi-av">व</div>
             <div><div class="testi-name">वेंकटेश जामगे</div><div class="testi-loc">लोहा</div></div>
@@ -1067,7 +1064,7 @@
         <div class="testi-card">
           <div class="testi-quote">"</div>
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">क्षितिज हॉस्पिटल हे खरोखरच एक आदर्श रुग्णालय आहे. येथे सर्व वैद्यकीय सेवा परवडणाऱ्या किमतीत मिळतात आणि गुणवत्तेशी कोणतीही तडजोड केली जात नाही. ऑपरेशन थिएटर अत्याधुनिक होते आणि डॉक्टर व कर्मचारी अतिशय कुशल व व्यावसायिक होते.</p>
+          <p class="testi-text">क्षितिज हॉस्पिटल हे खरोखरच एक आदर्श रुग्णालय आहे. येथे सर्व वैद्यकीय सेवा परवडणाऱ्या किमतीत मिळतात आणि गुणवत्तेशी कोणतीही तडजोड केली जात नाही. ऑपरेशन थिएटर अत्याधुनिक होते.</p>
           <div class="testi-author">
             <div class="testi-av">श्र</div>
             <div><div class="testi-name">श्रद्धा पवाडे</div><div class="testi-loc">नांदेड</div></div>
@@ -1076,7 +1073,7 @@
         <div class="testi-card">
           <div class="testi-quote">"</div>
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">रात्री उशिरा इमर्जन्सीमुळे रुग्णालयात यावे लागले, पण टीमने किती लवकर सगळे हाताळले हे पाहून आश्चर्य वाटले. इमर्जन्सी विभाग अत्यंत कार्यक्षम आहे आणि डॉक्टर कोणत्याही वेळी मदतीसाठी तत्पर असतात.</p>
+          <p class="testi-text">रात्री उशिरा इमर्जन्सीमुळे रुग्णालयात यावे लागले, पण टीमने किती लवकर सगळे हाताळले हे पाहून आश्चर्य वाटले. इमर्जन्सी विभाग अत्यंत कार्यक्षम आहे.</p>
           <div class="testi-author">
             <div class="testi-av">शु</div>
             <div><div class="testi-name">शुभा गाढे</div><div class="testi-loc">नांदेड</div></div>
@@ -1183,6 +1180,7 @@
   </div>
   <div style="margin-top:4px;opacity:0.5">© २०२६ क्षितिज हॉस्पिटल. सर्व हक्क राखीव.</div>
 </footer>
+
 <script>var submitted = false;</script>
 <script>
 function scrollToAppt(e) {
@@ -1193,24 +1191,19 @@ function scrollToAppt(e) {
     : document.getElementById('appointment');
   if (!target) return;
 
-  // Close mobile menu if open
   var mm = document.getElementById('mmenu');
   if (mm) mm.classList.remove('open');
 
-  // Scroll
   var navH = document.querySelector('.nav') ? document.querySelector('.nav').offsetHeight : 66;
   var top = target.getBoundingClientRect().top + window.pageYOffset - navH - 12;
   window.scrollTo({ top: top, behavior: 'smooth' });
 
-  // Highlight pulse after scroll lands
   setTimeout(function() {
     target.classList.add('appt-highlight');
     setTimeout(function() { target.classList.remove('appt-highlight'); }, 1600);
   }, 600);
 }
-</script>
 
-<script>
 (function() {
   const track = document.getElementById('testiTrack');
   const dotsWrap = document.getElementById('testiDots');
