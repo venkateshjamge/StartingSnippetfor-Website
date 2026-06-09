@@ -705,32 +705,43 @@
       </div>
     </div>
     <div class="hero-right">
-      <form class="appt-card" id="appointment"
-            action="https://docs.google.com/forms/d/e/1FAIpQLSfbXH__k91EG4oE7_NubHQahPKPJ64r3shz1gJMN752z_9EdQ/formResponse"
-            method="POST"
-            onsubmit="handleApptFormSubmit(event)">
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
+            onload="if(submitted) { alert('तुमची अपॉइंटमेंट यशस्वीरीत्या बुक झाली आहे! (Appointment Booked!)'); window.location.reload(); }">
+    </iframe>
+
+    <form class="appt-card" id="appointment"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSfbXH__k91EG4oE7_NubHQahPKPJ64r3shz1gJMN752z_9EdQ/formResponse"
+          method="POST"
+          target="hidden_iframe"
+          onsubmit="submitted=true;">
+          
         <h3><span style="font-style:normal">📅</span> अपॉइंटमेंट बुक करा</h3>
+        
         <label>तुमचे नाव</label>
-        <input type="text" name="entry.1720424357" placeholder="पूर्ण नाव" />
+        <input type="text" name="entry.1720424357" placeholder="पूर्ण नाव" required />
+        
         <label>मोबाईल नंबर</label>
-        <input type="tel" name="entry.1833859839" placeholder="+91 XXXXX XXXXX" />
+        <input type="tel" name="entry.1833859839" placeholder="+91 XXXXX XXXXX" required />
+        
         <label>विभाग निवडा</label>
-        <select name="entry.420975868">
-          <option value="">विभाग निवडा</option>
-          <option>स्त्रीरोग व प्रसूती</option>
-          <option>सामान्य औषध</option>
-          <option>सामान्य शस्त्रक्रिया</option>
-          <option>बालरोग व NICU</option>
-          <option>अस्थिरोग</option>
-          <option>हृदयरोग</option>
-          <option>मज्जातंत्र विज्ञान</option>
-          <option>नेत्ररोग</option>
+        <select name="entry.420975868" required>
+            <option value="">विभाग निवडा</option>
+            <option value="स्त्रीरोग व प्रसूती">स्त्रीरोग व प्रसूती</option>
+            <option value="सामान्य औषध">सामान्य औषध</option>
+            <option value="सामान्य शस्त्रक्रिया">सामान्य शस्त्रक्रिया</option>
+            <option value="बालरोग व NICU">बालरोग व NICU</option>
+            <option value="अस्थिरोग">अस्थिरोग</option>
+            <option value="हृदयरोग">हृदयरोग</option>
+            <option value="मज्जातंत्र विज्ञान">मज्जातंत्र विज्ञान</option>
+            <option value="नेत्ररोग">नेत्ररोग</option>
         </select>
+        
         <label>पसंतीची तारीख</label>
-        <input type="date" name="entry.976180284" />
+        <input type="date" name="entry.976180284" required />
+        
         <button type="submit">अपॉइंटमेंट निश्चित करा</button>
-      </form>
-    </div>
+    </form>
+</div>
   </div>
 </section>
 
@@ -1197,33 +1208,7 @@
   </div>
   <div style="margin-top:4px;opacity:0.5">© २०२६ क्षितिज हॉस्पिटल. सर्व हक्क राखीव.</div>
 </footer>
-
-<script>
-function handleApptFormSubmit(event) {
-  event.preventDefault(); // Stop the default page redirect
-  
-  var form = event.target;
-  var formData = new FormData(form);
-  var url = form.action;
-
-  // Send the data in the background using no-cors
-  fetch(url, {
-    method: 'POST',
-    mode: 'no-cors',
-    body: formData
-  })
-  .then(function() {
-    // Show success message and clear the inputs
-    alert('तुमची अपॉइंटमेंट रिक्वेस्ट प्राप्त झाली आहे. हॉस्पिटलमधून लवकरच तुम्हाला कॉल येईल.');
-    form.reset();
-  })
-  .catch(function(error) {
-    console.error('Error submitting form:', error);
-    alert('काहीतरी चूक झाली. कृपया पुन्हा प्रयत्न करा किंवा आम्हाला थेट कॉल करा.');
-  });
-}
-</script>
-
+<script>var submitted = false;</script>
 <script>
 function scrollToAppt(e) {
   e.preventDefault();
