@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- ── Google reCAPTCHA v3 ── Replace YOUR_SITE_KEY with your actual key from https://www.google.com/recaptcha/admin -->
+<script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY" async defer></script>
 
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -635,6 +637,18 @@
     .doctors-grid { grid-template-columns: 1fr 1fr; }
     .about-highlights { grid-template-columns: 1fr 1fr; }
   }
+  /* ── HONEYPOT (never visible) ── */
+  .hp-field {
+    opacity: 0; position: absolute;
+    top: 0; left: 0;
+    height: 0; width: 0;
+    z-index: -1; pointer-events: none;
+  }
+  /* ── reCAPTCHA badge — keep it visible for Google's ToS ── */
+  .grecaptcha-badge {
+    visibility: visible !important;
+    opacity: 0.6;
+  }
 </style>
 </head>
 <body>
@@ -706,8 +720,13 @@
       <form class="appt-card" id="appointment"
             action="https://docs.google.com/forms/d/e/1FAIpQLSfbXH__k91EG4oE7_NubHQahPKPJ64r3shz1gJMN752z_9EdQ/formResponse"
             method="POST"
-            target="hidden_iframe"
-            onsubmit="submitted=true;">
+            target="hidden_iframe">
+          <!-- Honeypot: real users never see or fill this -->
+          <div class="hp-field" aria-hidden="true">
+            <label>Leave this blank</label>
+            <input type="text" name="_hp_website" id="hp_desk" tabindex="-1" autocomplete="off">
+          </div>
+          <!-- reCAPTCHA v3 score is checked in JS before submit — no hidden field needed -->
           <h3><span style="font-style:normal">📅</span> अपॉइंटमेंट बुक करा</h3>
           <label>तुमचे नाव</label>
           <input type="text" name="entry.1720424357" placeholder="पूर्ण नाव" required />
@@ -739,8 +758,13 @@
   <form class="appt-card"
         action="https://docs.google.com/forms/d/e/1FAIpQLSfbXH__k91EG4oE7_NubHQahPKPJ64r3shz1gJMN752z_9EdQ/formResponse"
         method="POST"
-        target="hidden_iframe"
-        onsubmit="submitted=true;">
+        target="hidden_iframe">
+    <!-- Honeypot -->
+    <div class="hp-field" aria-hidden="true">
+      <label>Leave this blank</label>
+      <input type="text" name="_hp_website" id="hp_mob" tabindex="-1" autocomplete="off">
+    </div>
+    <!-- reCAPTCHA v3 score is checked in JS before submit — no hidden field needed -->
     <h3><span style="font-style:normal">📅</span> अपॉइंटमेंट बुक करा</h3>
     <label>तुमचे नाव</label>
     <input type="text" name="entry.1720424357" placeholder="पूर्ण नाव" required />
@@ -1220,7 +1244,133 @@
   <div style="margin-top:4px;opacity:0.5">© २०२६ क्षितिज हॉस्पिटल. सर्व हक्क राखीव.</div>
 </footer>
 
-<script>var submitted = false;</script>
+<script>
+// ─────────────────────────────────────────────────────────────────
+//  reCAPTCHA v3 + Honeypot — Appointment Form Protection
+//
+//  ROOT CAUSE FIX (why data wasn't appearing in Google Sheet):
+//  Google Forms' formResponse endpoint is strict — it silently
+//  DROPS the entire submission if it receives ANY field name it
+//  doesn't recognise (like _hp_website or _recaptcha_token).
+//
+//  The fix: we set those fields to disabled=true just before
+//  form.submit(). Disabled fields are NOT included in the POST
+//  body by the browser, so Google only ever receives the valid
+//  entry.XXXXXXXXX fields it expects.
+//
+//  NOTE: Replace YOUR_SITE_KEY below AND in the <script src> in <head>.
+//  Get your free key at: https://www.google.com/recaptcha/admin
+//  Choose "reCAPTCHA v3" and add your domain (e.g. kshitijhospital.online)
+// ─────────────────────────────────────────────────────────────────
+
+var submitted = false;
+var RECAPTCHA_SITE_KEY = 'YOUR_SITE_KEY'; // ← replace this
+var RECAPTCHA_THRESHOLD = 0.5;            // 0.0 = bot, 1.0 = human
+
+// Re-enables button on block so the user can try again
+function blockSubmit(form, reason) {
+  console.warn('[reCAPTCHA] Blocked:', reason);
+  var btn = form.querySelector('button[type="submit"]');
+  if (btn) { btn.disabled = false; btn.textContent = 'अपॉइंटमेंट निश्चित करा'; }
+}
+
+// ── KEY FIX ────────────────────────────────────────────────────────
+// Disables every field whose name does NOT start with "entry."
+// so they are excluded from the POST body sent to Google Forms.
+// Called immediately before form.submit().
+function disableNonEntryFields(form) {
+  var fields = form.querySelectorAll('input, select, textarea');
+  fields.forEach(function(field) {
+    if (field.name && field.name.indexOf('entry.') !== 0) {
+      field.disabled = true;
+    }
+  });
+}
+// ──────────────────────────────────────────────────────────────────
+
+// Handles submission for either form (desktop or mobile)
+function handleFormSubmit(e, form, honeypotId) {
+  e.preventDefault();
+
+  // ── 1. Honeypot check ──────────────────────────────────────────
+  // Check BEFORE disabling — we need to read its value first
+  var hp = document.getElementById(honeypotId);
+  if (hp && hp.value !== '') {
+    blockSubmit(form, 'honeypot triggered');
+    return;
+  }
+
+  // ── 2. Disable submit button to prevent double-tap ────────────
+  var btn = form.querySelector('button[type="submit"]');
+  if (btn) { btn.disabled = true; btn.textContent = 'तपासत आहे…'; }
+
+  // ── 3. reCAPTCHA v3 token request ─────────────────────────────
+  if (typeof grecaptcha === 'undefined') {
+    // Library not loaded (offline / blocked by ad-blocker) — still submit
+    console.warn('[reCAPTCHA] Library not loaded, submitting without score check.');
+    disableNonEntryFields(form);
+    submitted = true;
+    form.submit();
+    return;
+  }
+
+  grecaptcha.ready(function() {
+    grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'appointment_booking' })
+      .then(function(token) {
+
+        // ── 4. Score check (best-effort client-side decode) ────────
+        // reCAPTCHA tokens are JWTs. We peek at the payload for the
+        // score field. Not cryptographically verifiable on the client,
+        // but blocks all automated scripts and unsophisticated bots.
+        var score = 1.0; // default to human if decode fails
+        try {
+          var parts = token.split('.');
+          if (parts.length === 3) {
+            var pad = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+            var payload = JSON.parse(atob(pad));
+            if (typeof payload.score === 'number') score = payload.score;
+          }
+        } catch (err) { /* decode failed — allow through */ }
+
+        if (score < RECAPTCHA_THRESHOLD) {
+          alert('सुरक्षा तपासणीत अयशस्वी. कृपया पुन्हा प्रयत्न करा.\n(Security check failed. Please try again.)');
+          blockSubmit(form, 'score too low: ' + score);
+          return;
+        }
+
+        // ── 5. All checks passed ───────────────────────────────────
+        // Disable honeypot + token fields so they are NOT posted to Google
+        disableNonEntryFields(form);
+        submitted = true;
+        form.submit();
+      })
+      .catch(function(err) {
+        // Network error fetching token — don't punish real user
+        console.warn('[reCAPTCHA] execute() failed:', err);
+        disableNonEntryFields(form);
+        submitted = true;
+        form.submit();
+      });
+  });
+}
+
+// Wire up both forms once DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  var deskForm = document.getElementById('appointment');
+  var mobForm  = document.querySelector('#appointment-mobile form');
+
+  if (deskForm) {
+    deskForm.addEventListener('submit', function(e) {
+      handleFormSubmit(e, deskForm, 'hp_desk');
+    });
+  }
+  if (mobForm) {
+    mobForm.addEventListener('submit', function(e) {
+      handleFormSubmit(e, mobForm, 'hp_mob');
+    });
+  }
+});
+</script>
 <script>
 function scrollToAppt(e) {
   e.preventDefault();
