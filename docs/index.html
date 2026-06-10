@@ -639,6 +639,10 @@
 </head>
 <body>
 
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+        onload="if(submitted){alert('तुमची अपॉइंटमेंट यशस्वीरीत्या बुक झाली आहे! (Appointment Booked!)');window.location.reload();}">
+</iframe>
+
 <nav class="nav">
   <div class="nav-logo">
     <svg width="36" height="40" viewBox="0 0 36 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
@@ -681,10 +685,6 @@
   <a href="#appointment" class="cta-mobile" onclick="document.getElementById('mmenu').classList.remove('open'); scrollToAppt(event)"><span style="font-style:normal">📅</span> अपॉइंटमेंट घ्या</a>
 </div>
 
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
-        onload="if(submitted) { alert('तुमची अपॉइंटमेंट यशस्वीरीत्या बुक झाली आहे! (Appointment Booked!)'); window.location.reload(); }">
-</iframe>
-
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-left">
@@ -721,9 +721,11 @@
               <option value="सामान्य शस्त्रक्रिया">सामान्य शस्त्रक्रिया</option>
               <option value="बालरोग">बालरोग</option>
               <option value="अस्थिरोग">अस्थिरोग</option>
+              <option value="मूत्ररोग व किडनी">मूत्ररोग व किडनी</option>
+              <option value="डायलिसिस">डायलिसिस</option>
               <option value="हृदयरोग">हृदयरोग</option>
               <option value="मज्जातंत्र विज्ञान">मज्जातंत्र विज्ञान</option>
-              <option value="नेत्ररोग">नेत्ररोग</option>
+              <option value="लॅप्रोस्कोपिक शस्त्रक्रिया">लॅप्रोस्कोपिक शस्त्रक्रिया</option>
           </select>
           <label>पसंतीची तारीख</label>
           <input type="date" name="entry.976180284" required />
@@ -752,9 +754,11 @@
       <option value="सामान्य शस्त्रक्रिया">सामान्य शस्त्रक्रिया</option>
       <option value="बालरोग">बालरोग</option>
       <option value="अस्थिरोग">अस्थिरोग</option>
+      <option value="मूत्ररोग व किडनी">मूत्ररोग व किडनी</option>
+      <option value="डायलिसिस">डायलिसिस</option>
       <option value="हृदयरोग">हृदयरोग</option>
       <option value="मज्जातंत्र विज्ञान">मज्जातंत्र विज्ञान</option>
-      <option value="नेत्ररोग">नेत्ररोग</option>
+      <option value="लॅप्रोस्कोपिक शस्त्रक्रिया">लॅप्रोस्कोपिक शस्त्रक्रिया</option>
     </select>
     <label>पसंतीची तारीख</label>
     <input type="date" name="entry.976180284" required />
@@ -786,7 +790,7 @@
   <div class="about-inner">
     <div class="about-text">
       <h2>विश्वासार्ह काळजी, परवडणारी सेवा</h2>
-      <p><strong style="color:#ffa070;">क्षितिज मल्टीस्पेशालिटी अँड मॅटर्निटी हॉस्पिटल</strong> हे नांदेडमधील एक अग्रगण्य रुग्णालय आहे. डॉ. राजेंद्र जाधव आणि डॉ. सरस्वती जाधव यांच्या नेतृत्वाखाली हे रुग्णालय <strong style="color:#ffa070;">परवडणारी, दर्जेदार आणि संवेदनशील</strong> आरोग्यसेवा देते. अत्याधुनिक OT, प्रसूतीकक्ष आणि पुनर्प्राप्ती कक्षासह, वेदनारहित प्रसूती आणि NST (नॉन-स्ट्रेस टेस्ट) यांसारख्या विशेष सेवा येथे उपलब्ध आहेत — २४/७.</p>
+      <p><strong style="color:#ffa070;">क्षितिज मल्टीस्पेशालिटी अँड मॅटर्निटी हॉस्पिटल</strong> हे नांदेडमधील एक अग्रगण्य रुग्णालय आहे. डॉ. राजेंद्र जाधव आणि डॉ. सरस्वती जाधव यांच्या नेतृत्वाखाली हे रुग्णालय <strong style="color:#ffa070;">परवडणारी, दर्जेदार आणि संवेदनशील</strong> आरोग्यसेवा देते. अत्याधुनिक OT, प्रसूतीकक्ष आणि पुनर्प्राप्ती कक्षासह, वेदनारहित प्रसूती आणि <strong style="color:#ffa070;">USG आणि NST (सोनोग्राफी आणि नॉन-स्ट्रेस टेस्ट)</strong> यांसारख्या विशेष सेवा येथे उपलब्ध आहेत — २४/७. ४D/प्रगत सोनोग्राफी व भ्रूण निरीक्षण (Fetal Monitoring) पूर्णपणे कार्यरत.</p>
       <div class="about-badges">
         <span class="about-badge"><span style="font-style:normal">🕐</span> २४/७ रुग्णालय</span>
         <span class="about-badge"><span style="font-style:normal">💊</span> २४/७ फार्मसी</span>
@@ -807,8 +811,8 @@
       </div>
       <div class="hl-card">
         <span style="font-style:normal">💓</span>
-        <div class="hl-val">NST</div>
-        <div class="hl-lbl">नॉन-स्ट्रेस टेस्ट</div>
+        <div class="hl-val">USG + NST</div>
+        <div class="hl-lbl">सोनोग्राफी व फेटल मॉनिटरिंग</div>
       </div>
       <div class="hl-card">
         <span style="font-style:normal">🚑</span>
@@ -864,6 +868,34 @@
         <div class="doc-exp">MBBS, MS, FMAS</div>
         <div class="doc-days">सोम – शनि</div>
       </div>
+      <div class="doc-card">
+        <div class="doc-avatar" style="background:#e4f4fc;color:#1a9bd7;font-size:20px;">👶</div>
+        <div class="doc-name">डॉ. अंकुश जी. भुसारे</div>
+        <div class="doc-spec">बालरोग विभाग (Pediatrics & Newborn)</div>
+        <div class="doc-exp">MBBS, DCH (Pediatrics)</div>
+        <div class="doc-days">सोम – शनि</div>
+      </div>
+      <div class="doc-card">
+        <div class="doc-avatar" style="background:#fff0eb;color:#e8470a;font-size:20px;">❤️</div>
+        <div class="doc-name">डॉ. सतीश जी. गरूड</div>
+        <div class="doc-spec">हृदयरोग विभाग (Cardiology)</div>
+        <div class="doc-exp">MBBS, MD (Medicine), DM (Cardiology)</div>
+        <div class="doc-days">केवळ निमंत्रणावरून</div>
+      </div>
+      <div class="doc-card">
+        <div class="doc-avatar" style="background:#eaf3de;color:#2d6a2d;font-size:20px;">🧠</div>
+        <div class="doc-name">डॉ. अनिकेत कल्याणी</div>
+        <div class="doc-spec">मेंदू व मज्जासंस्था विभाग (Neurology)</div>
+        <div class="doc-exp">MBBS, MD (Medicine), DM (Neurology)</div>
+        <div class="doc-days">केवळ निमंत्रणावरून</div>
+      </div>
+      <div class="doc-card">
+        <div class="doc-avatar" style="background:#fce4f3;color:#a0278f;font-size:20px;">👩‍⚕️</div>
+        <div class="doc-name">डॉ. वर्षा आर. मुंडे (जाधव)</div>
+        <div class="doc-spec">स्त्रीरोग व प्रसूतीशास्त्र (Obs & Gynec)</div>
+        <div class="doc-exp">MBBS, DNB, DGO</div>
+        <div class="doc-days">सोम – शनि</div>
+      </div>
     </div>
     <p style="text-align:center;margin-top:1.5rem;font-size:13px;color:var(--text-muted);">
       <span style="font-style:normal">ℹ️</span>
@@ -883,7 +915,7 @@
       <div class="dept-card">
         <div class="dept-icon"><span style="font-style:normal">🍼</span></div>
         <div class="dept-name">स्त्रीरोग व प्रसूती</div>
-        <div class="dept-tag">वेदनारहित प्रसूती व NST</div>
+        <div class="dept-tag">वेदनारहित प्रसूती, USG आणि NST</div>
       </div>
       <div class="dept-card">
         <div class="dept-icon"><span style="font-style:normal">👶</span></div>
@@ -916,6 +948,11 @@
         <div class="dept-tag">मूत्ररोग व किडनी उपचार</div>
       </div>
       <div class="dept-card">
+        <div class="dept-icon"><span style="font-style:normal">🩸</span></div>
+        <div class="dept-name">डायलिसिस विभाग</div>
+        <div class="dept-tag">किडनी डायलिसिस सेवा</div>
+      </div>
+      <div class="dept-card">
         <div class="dept-icon"><span style="font-style:normal">💓</span></div>
         <div class="dept-name">हृदयरोग</div>
         <div class="dept-tag">हृदय उपचार</div>
@@ -924,11 +961,6 @@
         <div class="dept-icon"><span style="font-style:normal">🧠</span></div>
         <div class="dept-name">मज्जातंत्र विज्ञान</div>
         <div class="dept-tag">मेंदू व नसांचे उपचार</div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon"><span style="font-style:normal">👁️</span></div>
-        <div class="dept-name">नेत्ररोग</div>
-        <div class="dept-tag">डोळ्यांची काळजी</div>
       </div>
       <div class="dept-card">
         <div class="dept-icon"><span style="font-style:normal">🧪</span></div>
@@ -974,10 +1006,10 @@
         </div>
       </div>
       <div class="svc-card">
-        <div class="svc-icon"><span style="font-style:normal">💓</span></div>
+        <div class="svc-icon"><span style="font-style:normal">🔬</span></div>
         <div>
-          <div class="svc-title">NST (नॉन-स्ट्रेस टेस्ट)</div>
-          <div class="svc-desc">गर्भारपणात आई आणि बाळ दोघांचेही आरोग्य सुनिश्चित करण्यासाठी गर्भस्थ शिशूचे निरीक्षण.</div>
+          <div class="svc-title">USG आणि NST (सोनोग्राफी आणि नॉन-स्ट्रेस टेस्ट)</div>
+          <div class="svc-desc">४D/प्रगत सोनोग्राफी आणि भ्रूण निरीक्षण (Fetal Monitoring) सेवा २४/७ पूर्णपणे कार्यरत. गर्भारपणात आई आणि बाळ दोघांचेही आरोग्य सुनिश्चित करण्यासाठी अत्याधुनिक अल्ट्रासाऊंड तंत्रज्ञान उपलब्ध.</div>
         </div>
       </div>
       <div class="svc-card">
@@ -985,6 +1017,13 @@
         <div>
           <div class="svc-title">२४/७ फार्मसी</div>
           <div class="svc-desc">रुग्णालयातील इन-हाऊस फार्मसी चोवीस तास चालू — रुग्णांना औषधांसाठी बाहेर जाण्याची गरज नाही.</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><span style="font-style:normal">🩸</span></div>
+        <div>
+          <div class="svc-title">डायलिसिस विभाग</div>
+          <div class="svc-desc">किडनी निकामी झालेल्या रुग्णांसाठी अत्याधुनिक डायलिसिस सुविधा. प्रशिक्षित टीमद्वारे सुरक्षित व विश्वासार्ह हेमोडायलिसिस सेवा उपलब्ध.</div>
         </div>
       </div>
     </div>
