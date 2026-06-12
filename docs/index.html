@@ -8,8 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@400;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!-- ── Google reCAPTCHA v3 ── Replace YOUR_SITE_KEY with your actual key from https://www.google.com/recaptcha/admin -->
-<script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY" async defer></script>
 
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1264,125 +1262,60 @@
 // ─────────────────────────────────────────────────────────────────
 
 var submitted = false;
-var iframeReady = false; // prevents false onload trigger on initial page load
-var RECAPTCHA_SITE_KEY = 'YOUR_SITE_KEY'; // ← replace with real key from https://www.google.com/recaptcha/admin
-var RECAPTCHA_THRESHOLD = 0.5;
-var RECAPTCHA_CONFIGURED = (RECAPTCHA_SITE_KEY !== 'YOUR_SITE_KEY' && RECAPTCHA_SITE_KEY !== '');
+var iframeReady = false;
 
-// Resets button back to ready state
-function resetBtn(form) {
-  var btn = form.querySelector('button[type="submit"]');
-  if (btn) { btn.disabled = false; btn.textContent = 'अपॉइंटमेंट निश्चित करा'; }
-}
-
-// Disables non-entry fields so Google Forms never sees them in the POST
-// Uses :is(input,select,textarea) to avoid accidentally matching iframe[name]
+// ── Disables honeypot fields before POST so Google Forms never sees them ──
 function disableNonEntryFields(form) {
   form.querySelectorAll('input, select, textarea').forEach(function(f) {
-    if (f.name && f.name.indexOf('entry.') !== 0) {
-      f.disabled = true;
-      f.setAttribute('data-was-disabled', '1');
-    }
+    if (f.name && f.name.indexOf('entry.') !== 0) f.disabled = true;
   });
 }
 
-// Final submit — disable junk fields, post to Google, show confirmation
+// ── Core submit: strip junk fields then fire ──────────────────────────────
 function doSubmit(form) {
   disableNonEntryFields(form);
   submitted = true;
   form.submit();
-  // Do NOT re-enable fields here — the iframe onload handles UI reset
 }
 
+// ── Form submit handler ───────────────────────────────────────────────────
 function handleFormSubmit(e, form, honeypotId) {
   e.preventDefault();
 
-  // ── 1. Honeypot check (read value before any disabling) ────────
+  // 1. Honeypot — bots fill hidden fields, humans don't
   var hp = document.getElementById(honeypotId);
-  if (hp && hp.value !== '') {
-    console.warn('[Security] Honeypot triggered — blocked.');
-    return;
-  }
+  if (hp && hp.value !== '') return; // silent block
 
-  // ── 2. Show loading state on button ───────────────────────────
-  var btn = form.querySelector('button[type="submit"]');
-  if (btn) { btn.disabled = true; btn.textContent = 'तपासत आहे…'; }
-
-  // ── 3. If reCAPTCHA not configured yet, submit directly ────────
-  // This handles the case where YOUR_SITE_KEY hasn't been replaced,
-  // or reCAPTCHA script failed to load (offline / ad-blocker).
-  if (!RECAPTCHA_CONFIGURED || typeof grecaptcha === 'undefined') {
-    console.info('[reCAPTCHA] Skipping score check — submitting directly.');
-    doSubmit(form);
-    return;
-  }
-
-  // ── 4. reCAPTCHA v3 score check ───────────────────────────────
-  // Safety net: if grecaptcha.ready never calls back within 5s
-  // (network issue), we submit anyway so real patients aren't blocked.
-  var timedOut = false;
-  var fallbackTimer = setTimeout(function() {
-    timedOut = true;
-    console.warn('[reCAPTCHA] Timed out — submitting without score check.');
-    doSubmit(form);
-  }, 5000);
-
-  grecaptcha.ready(function() {
-    if (timedOut) return; // fallback already fired
-    grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'appointment_booking' })
-      .then(function(token) {
-        if (timedOut) return;
-        clearTimeout(fallbackTimer);
-
-        // Best-effort score decode from JWT payload
-        var score = 1.0;
-        try {
-          var pad = token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');
-          var payload = JSON.parse(atob(pad));
-          if (typeof payload.score === 'number') score = payload.score;
-        } catch(err) { /* decode failed — treat as human */ }
-
-        if (score < RECAPTCHA_THRESHOLD) {
-          clearTimeout(fallbackTimer);
-          alert('सुरक्षा तपासणीत अयशस्वी. कृपया पुन्हा प्रयत्न करा.\n(Security check failed. Please try again.)');
-          resetBtn(form);
-          return;
-        }
-
-        doSubmit(form);
-      })
-      .catch(function() {
-        if (timedOut) return;
-        clearTimeout(fallbackTimer);
-        console.warn('[reCAPTCHA] execute() error — submitting anyway.');
-        doSubmit(form);
-      });
-  });
+  // 2. Submit directly — no reCAPTCHA delay
+  doSubmit(form);
 }
 
-// iframe onload fires twice: once on page load (blank), once after form submit.
-// iframeReady flag skips the first (blank) fire.
+// ── iframe fires once on page load (blank) then once after submit ─────────
 document.getElementById('hidden_iframe').addEventListener('load', function() {
-  if (!iframeReady) { iframeReady = true; return; } // skip blank page load
+  if (!iframeReady) { iframeReady = true; return; } // skip first blank fire
   if (!submitted) return;
 
-  // Show success state on all submit buttons
+  // Show success on button
   document.querySelectorAll('.appt-card button[type="submit"]').forEach(function(btn) {
     btn.disabled = false;
     btn.textContent = '✓ बुकिंग झाले!';
-    setTimeout(function() {
-      btn.textContent = 'अपॉइंटमेंट निश्चित करा';
-      btn.disabled = false;
-    }, 3000);
   });
 
-  // Show confirmation alert then reload
+  // Alert then reload
   setTimeout(function() {
     alert('तुमची अपॉइंटमेंट यशस्वीरीत्या बुक झाली आहे!\n(Appointment Booked Successfully!)');
     submitted = false;
     window.location.reload();
-  }, 400);
+  }, 300);
 });
+
+// ─────────────────────────────────────────────────────────────────────────
+// TO ADD reCAPTCHA LATER:
+// 1. Get a free key at https://www.google.com/recaptcha/admin (choose v3)
+// 2. Add your domain (kshitijhospital.online)
+// 3. Replace the <script src="...?render=YOUR_SITE_KEY"> in <head>
+// 4. Add grecaptcha.execute() call inside handleFormSubmit before doSubmit
+// ─────────────────────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', function() {
   var deskForm = document.getElementById('appointment');
